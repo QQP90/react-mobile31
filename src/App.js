@@ -1,23 +1,34 @@
-import React from 'react';
-import './App.css';
-import { Button, WhiteSpace, WingBlank } from 'antd-mobile';
+import React ,{Fragment} from 'react';
 
-function App() {
-  return (
-    <div className="App">
-       <Button>default</Button><WhiteSpace />
-      <Button disabled>default disabled</Button><WhiteSpace />
-      <Button type="primary">primary</Button><WhiteSpace />
-      <Button type="primary" disabled>primary disabled</Button><WhiteSpace />
-      <Button type="warning">warning</Button><WhiteSpace />
-      <Button type="warning" disabled>warning disabled</Button><WhiteSpace />
-      <Button loading>loading button</Button><WhiteSpace />
-      <Button icon="check-circle-o">with icon</Button><WhiteSpace />
-      <Button icon={<img src="https://gw.alipayobjects.com/zos/rmsportal/jBfVSpDwPbitsABtDDlB.svg" alt="" />}>with custom icon</Button><WhiteSpace />
-      <Button icon="check-circle-o" inline size="small" style={{ marginRight: '4px' }}>with icon and inline</Button>
-      <Button icon="check-circle-o" inline size="small">with icon and inline</Button>
-    </div>
-  );
+import {HashRouter as Router ,Route} from "react-router-dom"
+import Home from "./pages/Home"
+import Cart from "./pages/Cart"
+import Mine from "./pages/Mine"
+import Mylayout from './component/My_layout';
+
+
+
+class App  extends React.Component {
+ 
+
+
+
+  render() {
+    return (
+      <Fragment>
+       
+        <Router>
+     
+          <Route path="/" exact render={(props)=><Mylayout {...props}><Home/></Mylayout>}/>
+          <Route path="/Cart"  render={(props)=><Mylayout  {...props}><Cart/></Mylayout>}/>
+          <Route path="/Mine"  render={(props)=><Mylayout  {...props}><Mine/></Mylayout>}/>
+         
+
+        </Router>
+      </Fragment>
+     
+    );
+  }
 }
 
 export default App;
